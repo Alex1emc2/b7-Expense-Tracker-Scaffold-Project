@@ -9,7 +9,7 @@ const Home = () => {
     const { expenses, deleteExpense } = useExpense()
     const navigate = useNavigate()
 
-    const total = expenses((sum, e) => sum + e.amount, 0)
+    const total = expenses.reduce((sum, e) => sum + e.amount, 0)
 
 
     /*=================================================
@@ -27,7 +27,7 @@ const Home = () => {
             <ul>
                 {expenses.map(e => (
                     <li key={e.id}>
-                        <Link to={'/detail/${e.id}'}>{e.title}</Link>
+                        <Link to={`/detail/${e.id}`}>{e.title}</Link>
                         {' - '}Rp {e.amount.toLocaleString()}
                         {' | '}{e.category}
                         <button onClick={() => deleteExpense(e.id)}>X</button>
