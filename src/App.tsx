@@ -1,8 +1,8 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom';
 import { ExpenseProvider } from './context/ExpenseContext'
-import Home from './pages/Home'
-import Detail from './pages/Detail'
-import AddExpense from './pages/AddExpense'
+import AddExpense from './pages/AddExpense';
+import Home from './pages/Home';
+import Detail from './pages/Detail';
 
 
 const App = () => (

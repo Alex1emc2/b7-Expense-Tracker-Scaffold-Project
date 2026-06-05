@@ -1,36 +1,40 @@
-import { createContext, useContext, useState } from 'react'
+import { useState, useEffect, createContext, useContext } from 'react'
 import type { Expense } from '../types'
 
-
+/*=======================================
+        INIT
+=======================================*/
 interface ExpenseType {
     expenses: Expense[]
     addExpense: (e: Expense) => void
-    deleteExpense: (id: number) => void
+    deleteExpense: (e: number) => void
 }
 
+const ExpenseContext = createContext<ExpenseType[] | null>(null)
 
-const ExpenseContext = createContext<ExpenseType | null>(null)
 
-
+/*=======================================
+        ExpenseProvider
+=======================================*/
 export const ExpenseProvider = ({ children }: { children: React.ReactNode }) => {
-    const [expenses, setExpenses] = useState<Expense[]>([])
-    // const [expenses, setExpenses] = useState<Expense[]>(() => {
-    //     const saved = localStorage.getItem('expenses')
-    //     return saved ? JSON.parse('expenses') : []
-    // })
+    const [expenses, setExpenses] = useState(() => {
+        const saved = localStorage.getItem('expense')
+        return saved ? JSON.parse(saved) : []
+    })
 
-    // useEffect(() => {
-    //     localStorage.setItem('expenses', JSON.stringify(expenses))
-    // }, [expenses])
+    useEffect(() => {
+        localStorage.setItem('expense', JSON.stringify(expenses))
+    }, [expenses])
 
-
-    const addExpense = (e: Expense) => {
+    
+    const addExpense = (e) => {
         setExpenses(prev => [...prev, e])
     }
 
-    const deleteExpense = (id: number) => {
-        setExpenses(prev => prev.filter(e => e.id !== id))
+    const deleteExpense = (id) => {
+        setExpenses(expenses.filter(e => e.id !== id))
     }
+
 
 
     return (
@@ -41,8 +45,11 @@ export const ExpenseProvider = ({ children }: { children: React.ReactNode }) => 
 }
 
 
+/*=======================================
+        USE EXPENSE
+=======================================*/
 export const useExpense = () => {
     const ctx = useContext(ExpenseContext)
-    if(!ctx) throw new Error('useExpense must be inside ExpenseProvider')
+    if(!ctx) throw new Error('useContext must be inside ExpenseProvider')
     return ctx
 }

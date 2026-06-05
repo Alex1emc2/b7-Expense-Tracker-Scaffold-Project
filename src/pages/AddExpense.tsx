@@ -1,83 +1,54 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { useExpense } from '../context/ExpenseContext'
+import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 
 
 const AddExpense = () => {
-    /*=================================================
+    /*=======================================
             INIT
-    =================================================*/
+    =======================================*/
     const { addExpense } = useExpense()
     const navigate = useNavigate()
-    
-    
+
+
     const [title, setTitle] = useState('')
     const [amount, setAmount] = useState('')
-    const [category, setCategory] = useState('food')
+    const [category, setCategory] = useState('food') 
     const [date, setDate] = useState('')
 
 
-
-    /*=================================================
-            SUBMITBTN
-    =================================================*/
+    /*=======================================
+            HANDLE SUBMIT BTN
+    =======================================*/
     const handleSubmit = () => {
         if(!title.trim() || !amount || !date) return
 
-        
+
         addExpense({
             id: Date.now(),
             title,
-            amount: Number(amount),
+            amount: Number,
             category,
-            date
+            date 
         })
-
-        navigate('/')
     }
 
 
-    /*=================================================
+    /*=======================================
             UI
-    =================================================*/
-    return(
+    =======================================*/
+    return (
         <div>
-            <h2>Add Expense</h2>
-
             <input 
             placeholder='title'
+            type='text'
             value={title}
-            onChange={(e) => setTitle(e.target.value)}
             />
-
-            <input
-            placeholder='amount'
-            type='number'
-            value={amount}
-            onChange={e => setAmount(e.target.value)}
-            />
-
-            <select value={category} onChange={e => setCategory(e.target.value)}>
-                <option value='food'>Food</option>
-                <option value='transport'>Transport</option>
-                <option value='shopping'>Shopping</option>
-                <option value='other'>Other</option>
-            </select>
-            
-            <input 
-            type='date'
-            value={date}
-            onChange={e => setDate(e.target.value)}
-            />
-
-
-            <button onClick={handleSubmit}>+ Add</button>
-            <button onClick={() => navigate(-1)}>Cancel</button>
         </div>
     )
-    
-}
 
+
+}
 
 
 export default AddExpense

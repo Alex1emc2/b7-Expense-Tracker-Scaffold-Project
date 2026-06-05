@@ -1,2 +1,2 @@
-const Detail = () => <h2>Detail</h2>
+const Detail = () => <h2>Detail Page</h2>
 export default Detail
