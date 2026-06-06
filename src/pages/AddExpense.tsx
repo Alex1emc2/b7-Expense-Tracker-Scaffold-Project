@@ -27,10 +27,11 @@ const AddExpense = () => {
         addExpense({
             id: Date.now(),
             title,
-            amount: Number,
+            amount: Number(amount),
             category,
             date 
         })
+        navigate('/')
     }
 
 
@@ -38,12 +39,37 @@ const AddExpense = () => {
             UI
     =======================================*/
     return (
-        <div>
+        <div style={{ height:'100vh', width:'500vh' }}>
             <input 
             placeholder='title'
             type='text'
             value={title}
+            onChange={e => setTitle(e.target.value)}
             />
+
+            <input
+            placeholder='amount'
+            type='number'
+            value={amount}
+            onChange={e => setAmount(e.target.value)}
+            />
+
+            <select value={category} onChange={e => setCategory(e.target.value)}>
+                <option>food</option>
+                <option>transportation</option>
+                <option>shopping</option>
+                <option>study</option>
+            </select>
+
+            <input
+            type='date'
+            value={date}
+            onChange={e => setDate(e.target.value)}
+            />
+
+            
+            <button onClick={handleSubmit}>+ Add</button>
+            <button onClick={() => navigate(-1)}>Cancel</button>
         </div>
     )
 

@@ -10,14 +10,14 @@ interface ExpenseType {
     deleteExpense: (e: number) => void
 }
 
-const ExpenseContext = createContext<ExpenseType[] | null>(null)
+const ExpenseContext = createContext<ExpenseType | null>(null)
 
 
 /*=======================================
         ExpenseProvider
 =======================================*/
 export const ExpenseProvider = ({ children }: { children: React.ReactNode }) => {
-    const [expenses, setExpenses] = useState(() => {
+    const [expenses, setExpenses] = useState<Expense[]>(() => {
         const saved = localStorage.getItem('expense')
         return saved ? JSON.parse(saved) : []
     })
@@ -27,11 +27,11 @@ export const ExpenseProvider = ({ children }: { children: React.ReactNode }) => 
     }, [expenses])
 
     
-    const addExpense = (e) => {
+    const addExpense = (e: Expense) => {
         setExpenses(prev => [...prev, e])
     }
 
-    const deleteExpense = (id) => {
+    const deleteExpense = (id: Number) => {
         setExpenses(expenses.filter(e => e.id !== id))
     }
 
