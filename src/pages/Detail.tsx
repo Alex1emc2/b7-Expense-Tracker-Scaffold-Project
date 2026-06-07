@@ -7,9 +7,10 @@ const Detail = () => {
             INIT
     =======================================*/
     const { expenses } = useExpense()
-    const { id } = useParams<Number>()
+    const { id } = useParams()
+    const NumberId = Number(id)
     const navigate = useNavigate()
-    const detail = expenses.filter(e => e.id !== id)
+    const detail = expenses.find(e => e.id === NumberId)
 
     
     /*=======================================
@@ -27,7 +28,7 @@ const Detail = () => {
                     <p>date: {detail.date}</p>
                 </li>
             ): (
-                <li>error, {id} not found</li>
+                <li>error, {NumberId} not found</li>
             )}</ul>
             <button onClick={() => navigate(-1)}>Cancel</button>
         </div>

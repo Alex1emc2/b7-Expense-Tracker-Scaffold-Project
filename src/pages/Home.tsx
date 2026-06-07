@@ -30,7 +30,7 @@ const Home = () => {
 
             <ul>{expenses.map(e => (
                 <li key={e.id}>
-                    <Link to={`/detail/:${e.id}`}>{e.title}</Link>
+                    <Link to={`/detail/${e.id}`}>{e.title}</Link>
 
                     {' | '} {e.amount}
                     {' - '} {e.category}
