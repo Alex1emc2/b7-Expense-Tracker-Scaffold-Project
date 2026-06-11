@@ -6,11 +6,11 @@ const Home = () => {
   /*=======================================
         INIT
   =======================================*/
-  const { expenses, deleteExpense, resetExpense, changeCurrency } =
+  const { expenses, deleteExpense, resetExpense, currencies, changeCurrency } =
     useExpense();
   const navigate = useNavigate();
 
-  const [currency, setCurrency] = useState("");
+  const [currency, setCurrency] = useState(currencies[0]?.currency);
 
   const total = expenses.reduce((sum, e) => sum + e.amount, 0).toLocaleString();
 
@@ -26,7 +26,8 @@ const Home = () => {
             value={currency}
             onChange={(e) => {
               setCurrency(e.target.value);
-              changeCurrency({ currency: currency });
+              if (confirm("confirm?"))
+                changeCurrency({ currency: e.target.value });
             }}
             style={{ backgroundColor: "yellow", margin: "8px" }}
           >
@@ -46,7 +47,9 @@ const Home = () => {
         {" "}
         RESET THE LIST{" "}
       </button>
-      <p>{currency}</p>
+      <p>
+        {currency} {"a"} {currencies.map((e) => e.currency)} {"a"}
+      </p>
 
       <ul>
         {expenses.map((e) => (

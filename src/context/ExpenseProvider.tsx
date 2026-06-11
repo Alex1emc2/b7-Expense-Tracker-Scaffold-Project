@@ -19,8 +19,8 @@ export const ExpenseProvider = ({
   });
 
   const [currencies, setCurrencies] = useState<Currency[]>(() => {
-    const saved = localStorage.getItem("currencies");
-    return saved ? JSON.parse(saved) : [];
+    const svd = localStorage.getItem("currencies");
+    return svd ? JSON.parse(svd) : [];
   });
 
   /*=======================================
@@ -48,6 +48,7 @@ export const ExpenseProvider = ({
   const resetExpense = () => {
     if (confirm("ARE YOU SURE? WANT TO RESET THE LIST")) {
       setExpenses([]);
+      setCurrencies([]);
     }
   };
 
