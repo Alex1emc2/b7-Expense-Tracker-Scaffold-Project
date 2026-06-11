@@ -26,8 +26,7 @@ const Home = () => {
             value={currency}
             onChange={(e) => {
               setCurrency(e.target.value);
-              if (confirm("confirm?"))
-                changeCurrency({ currency: e.target.value });
+              changeCurrency({ currency: e.target.value });
             }}
             style={{ backgroundColor: "yellow", margin: "8px" }}
           >
@@ -47,9 +46,6 @@ const Home = () => {
         {" "}
         RESET THE LIST{" "}
       </button>
-      <p>
-        {currency} {"a"} {currencies.map((e) => e.currency)} {"a"}
-      </p>
 
       <ul>
         {expenses.map((e) => (
