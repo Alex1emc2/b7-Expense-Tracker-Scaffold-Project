@@ -5,3 +5,7 @@ export interface Expense {
   category: string;
   date: string;
 }
+
+export interface Currency {
+  currency: string;
+}

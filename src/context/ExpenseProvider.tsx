@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import type { Expense } from "../types";
+import type { Expense, Currency } from "../types";
 import { ExpenseContext } from "./ExpenseContext";
 
 /*=======================================
@@ -18,12 +18,21 @@ export const ExpenseProvider = ({
     return saved ? JSON.parse(saved) : [];
   });
 
+  const [currencies, setCurrencies] = useState<Currency[]>(() => {
+    const saved = localStorage.getItem("currencies");
+    return saved ? JSON.parse(saved) : [];
+  });
+
   /*=======================================
         SIDE EFFECT
   =======================================*/
   useEffect(() => {
     localStorage.setItem("expenses", JSON.stringify(expenses));
   }, [expenses]);
+
+  useEffect(() => {
+    localStorage.setItem("currencies", JSON.stringify(currencies));
+  }, [currencies]);
 
   /*=======================================
         BUTTON
@@ -42,12 +51,23 @@ export const ExpenseProvider = ({
     }
   };
 
+  const changeCurrency = (e: Currency) => {
+    setCurrencies([e]);
+  };
+
   /*=======================================
         UI
   =======================================*/
   return (
     <ExpenseContext.Provider
-      value={{ expenses, addExpense, deleteExpense, resetExpense }}
+      value={{
+        expenses,
+        addExpense,
+        deleteExpense,
+        resetExpense,
+        currencies,
+        changeCurrency,
+      }}
     >
       {children}
     </ExpenseContext.Provider>

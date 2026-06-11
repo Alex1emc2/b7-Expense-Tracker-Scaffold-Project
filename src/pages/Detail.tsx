@@ -19,7 +19,7 @@ const Detail = () => {
       {detail ? (
         <strong>
           <h2>
-            Expense ID: {id}
+            Detail Expense ID: {id}
             <p>title: {detail.title}</p>
             <p>amount: {detail.amount}</p>
             <p>category: {detail.category}</p>
