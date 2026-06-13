@@ -18,7 +18,13 @@ const Home = () => {
         UI
   =======================================*/
   return (
-    <div>
+    <div
+      style={{
+        maxWidth: "500px",
+        margin: "0 auto",
+        padding: "20px",
+      }}
+    >
       <p>
         <strong>
           Total:
@@ -49,10 +55,21 @@ const Home = () => {
 
       <ul>
         {expenses.map((e) => (
-          <li key={e.id}>
-            <Link to={`/detail/${e.id}`}>{e.title}</Link>
-            {" | "} {e.category}
-            {" - "} {e.amount.toLocaleString()}
+          <li
+            key={e.id}
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              padding: "8px",
+              borderBottom: "1px solid #ddd",
+              listStyle: "none",
+            }}
+          >
+            <Link to={`/detail/${e.id}`} style={{ textDecoration: "none" }}>
+              {e.title}
+            </Link>
+            {e.category}
+            {" || "} {currencies[0]?.currency} {e.amount.toLocaleString()}
             <button
               onClick={() => deleteExpense(e.id)}
               style={{

@@ -35,7 +35,13 @@ const AddExpense = () => {
         UI
   =======================================*/
   return (
-    <div>
+    <div
+      style={{
+        maxWidth: "500px",
+        margin: "0 auto",
+        padding: "20px",
+      }}
+    >
       <input
         placeholder={"title"}
         type={"text"}
@@ -71,20 +77,15 @@ const AddExpense = () => {
         style={{ padding: "8px", margin: "4px " }}
       />
 
-      <div>
-        <button
-          onClick={handleSubmit}
-          style={{ padding: "8px", margin: "4px " }}
-        >
-          + Add
-        </button>
-        <button
-          onClick={() => navigate(-1)}
-          style={{ padding: "8px", margin: "4px " }}
-        >
-          Back
-        </button>
-      </div>
+      <button onClick={handleSubmit} style={{ padding: "8px", margin: "4px " }}>
+        + Add
+      </button>
+      <button
+        onClick={() => navigate(-1)}
+        style={{ padding: "8px", margin: "4px " }}
+      >
+        Back
+      </button>
     </div>
   );
 };
