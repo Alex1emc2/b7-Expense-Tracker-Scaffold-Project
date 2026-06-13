@@ -10,7 +10,7 @@ const Home = () => {
     useExpense();
   const navigate = useNavigate();
 
-  const [currency, setCurrency] = useState(currencies[0]?.currency);
+  const [currency, setCurrency] = useState(currencies[0]?.currency || "$");
 
   const total = expenses.reduce((sum, e) => sum + e.amount, 0).toLocaleString();
 
