@@ -69,7 +69,7 @@ const Home = () => {
               {e.title}
             </Link>
             {e.category}
-            {" || "} {currencies[0]?.currency} {e.amount.toLocaleString()}
+            {" || "} {currency} {e.amount.toLocaleString()}
             <button
               onClick={() => deleteExpense(e.id)}
               style={{
