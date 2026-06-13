@@ -15,7 +15,12 @@ const Detail = () => {
         UI
   =======================================*/
   return (
-    <div>
+    <div
+      style={{
+        maxWidth: "500px",
+        margin: "0 auto",
+      }}
+    >
       {detail ? (
         <strong>
           <h2>
