@@ -21,7 +21,7 @@ const Detail = () => {
           <h2>
             Detail Expense ID: {id}
             <p>title: {detail.title}</p>
-            <p>amount: {detail.amount}</p>
+            <p>amount: {detail.amount.toLocaleString()}</p>
             <p>category: {detail.category}</p>
             <p>date: {detail.date}</p>
           </h2>
