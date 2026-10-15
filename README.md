@@ -46,3 +46,5 @@ npm run build
 ## License
 
 MIT
+
+**Demo:** https://b7-expense-tracker-scaffold-project-black.vercel.app/
