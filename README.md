@@ -18,11 +18,14 @@ A multi-page expense tracker built to practice TypeScript, React Context, and Re
 React 19 · TypeScript · React Router v7 · Vite · ESLint
 
 ## Project Structure
+
+```text
 src/
 ├── context/ # ExpenseContext, ExpenseProvider, useExpense hook
 ├── pages/ # Home, AddExpense, Detail
 ├── types.ts # Expense and Currency interfaces
 └── App.tsx # Routes
+```
 
 ## Getting Started
 
