@@ -15,7 +15,7 @@ const App = () => (
         paddingTop: "32px",
       }}
     >
-      Expense Tracker v2.4
+      Expense Tracker
     </h2>
     <Routes>
       <Route path="/" element={<Home />} />
